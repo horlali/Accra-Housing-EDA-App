@@ -17,6 +17,7 @@ from plotly.offline import download_plotlyjs,plot,iplot
 cf.go_offline()
 #init_notebook_mode(connected=True)
 
+@st.cache(persist=True)
 
 # Title
 st.title("Accommodation in Accra: An Exploratory Data Analysis")
@@ -29,7 +30,6 @@ st.header("Explore the Dataset with the option below")
 dataset = 'accra_housing_dataset.xlsx'
 
 # Function to Load Dataset
-@st.cache(persist=True)
 def load_data(data):
     df = pd.read_excel(os.path.join(dataset))
     return df
