@@ -14,8 +14,8 @@ from PIL import Image
 # Interactive Visualization Library
 import cufflinks as cf
 from plotly.offline import download_plotlyjs,plot,iplot
+cf.go_offline()
 #init_notebook_mode(connected=True)
-#cf.go_offline()
 
 
 # Title
