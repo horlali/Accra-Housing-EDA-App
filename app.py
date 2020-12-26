@@ -1,5 +1,5 @@
+# Streamlit Library
 import streamlit as st
-
 
 # Standard EDA Library
 import pandas as pd
@@ -15,9 +15,11 @@ from PIL import Image
 import cufflinks as cf
 from plotly.offline import download_plotlyjs,plot,iplot
 cf.go_offline()
-#init_notebook_mode(connected=True)
 
+
+# Enabling Cache
 @st.cache(persist=True)
+
 
 # Title
 st.title("Accommodation in Accra: An Exploratory Data Analysis")
@@ -26,8 +28,10 @@ st.header("Built with Streamlit")
 st.title("Data Exploration")
 st.header("Explore the Dataset with the option below")
 
+
 # DataFrame
 dataset = 'accra_housing_dataset.xlsx'
+
 
 # Function to Load Dataset
 def load_data(data):
@@ -35,6 +39,7 @@ def load_data(data):
     return df
 
 data = load_data(dataset)
+
 
 # Showing heads and tails of Dataset
 show_data = st.radio("What section of the Dataset do you want to see",("Head","Tails","Sample","Whole"))
@@ -56,6 +61,7 @@ else:
 if st.checkbox("Show column Names"):
     st.write(data.columns)
 
+
 # Show Dimensions
 data_dim = st.radio("What Dimension do you want to see?", ("Rows","Columns","All"))
 if data_dim == "Rows":
@@ -67,6 +73,7 @@ elif data_dim == "Columns":
 else:
     st.text("Showing shape of Dataset")
     st.write(data.shape)
+
 
 # Show Summary
 data_summary = st.radio("This show a summary of the Dataset, both Numeric and Categorical",("Numeric","Categorical"))
@@ -121,7 +128,6 @@ if st.checkbox("Word Cloud of Locations"):
     st.write(plt.imshow(wordcloud))
     st.write(plt.axis('off'))
     st.pyplot(fig)
-
 
 
 # Distribution of Prices
