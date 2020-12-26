@@ -130,16 +130,13 @@ dist_option = st.selectbox('Select option',["Boxplot","Histogram"])
 if dist_option == "Boxplot":
     fig1 = data['price'].iplot(asFigure=True, kind='box',title='Distribution of Price')
     st.plotly_chart(fig1)
-if dist_option == "Histogram":
+elif dist_option == "Histogram":
     fig2 = data['price'].iplot(asFigure=True, kind='hist',bins=15,title='Distribution of Price')
     st.plotly_chart(fig2)
-else:
-    st.write("Please select option")
-
 
 
 # A bubble plot of price and the number of bedrooms, with respect to floor area.
-#st.header("Bubble Plot - [Price, Bedrooms, Area]")
-#if st.checkbox("A bubble plot of price and the number of bedrooms, with respect to floor area."):
-#    fig = data.iplot(kind='bubble',x='bedrooms',y='price',size='area')
-#    st.plotly_chart(fig)
+st.header("Bubble Plot - [Price, Bedrooms, Area]")
+if st.checkbox("A bubble plot of price and the number of bedrooms, with respect to floor area."):
+    fig = data.iplot(asFigure=True, kind='bubble',x='bedrooms',y='price',size='area')
+    st.plotly_chart(fig)
