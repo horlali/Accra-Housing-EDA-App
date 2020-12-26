@@ -104,7 +104,14 @@ else:
 
 
 
+
+# Data Visualization
+
+st.title("Data Visualization")
+st.header("Explore this easy to understand interactive chart to understand accommodation pricing in Accra")
+
 # World Cloud of Location
+st.header("WordCloud of Location of Apartment Listing")
 from wordcloud import WordCloud
 texts = " ".join(location for location in data.location)
 wordcloud = WordCloud(width=3000,height=1800,margin=1,max_font_size=150).generate(texts)
@@ -115,7 +122,24 @@ if st.checkbox("Word Cloud of Locations"):
     st.write(plt.axis('off'))
     st.pyplot(fig)
 
-# Data Visualization
-if st.checkbox("Show the Distribution of Price of Accommodation in Accra"):
-    fig = data['price'].iplot(asFigure=True, kind='box',title='Distribution of Price')
-    st.plotly_chart(fig)
+
+
+# Distribution of Prices
+st.header("Distribution of Prices")
+dist_option = st.selectbox('Select option',["Boxplot","Histogram"])
+if dist_option == "Boxplot":
+    fig1 = data['price'].iplot(asFigure=True, kind='box',title='Distribution of Price')
+    st.plotly_chart(fig1)
+elif dist_option == "Histogram":
+    fig2 = data['price'].iplot(kind='hist',bins=15,title='Distribution of Price')
+    st.plotly_chart(fig2)
+else:
+    st.write("Please select option")
+
+
+
+# A bubble plot of price and the number of bedrooms, with respect to floor area.
+#st.header("Bubble Plot - [Price, Bedrooms, Area]")
+#if st.checkbox("A bubble plot of price and the number of bedrooms, with respect to floor area."):
+#    fig = data.iplot(kind='bubble',x='bedrooms',y='price',size='area')
+#    st.plotly_chart(fig)
