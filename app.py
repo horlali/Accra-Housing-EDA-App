@@ -12,8 +12,8 @@ import os
 from PIL import Image
 
 # Interactive Visualization Library
-#import cufflinks as cf
-from plotly.offline import download_plotlyjs,init_notebook_mode,plot,iplot
+import cufflinks as cf
+from plotly.offline import download_plotlyjs,plot,iplot
 #init_notebook_mode(connected=True)
 #cf.go_offline()
 
@@ -116,6 +116,6 @@ if st.checkbox("Word Cloud of Locations"):
     st.pyplot(fig)
 
 # Data Visualization
-
 if st.checkbox("Show the Distribution of Price of Accommodation in Accra"):
-    st.plotly_chart(data['price'].iplot(kind='box',title='Distribution of Price'))
+    fig = data['price'].iplot(asFigure=True, kind='box',title='Distribution of Price')
+    st.plotly_chart(fig)
