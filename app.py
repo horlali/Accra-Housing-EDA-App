@@ -16,10 +16,8 @@ import cufflinks as cf
 from plotly.offline import download_plotlyjs,plot,iplot
 cf.go_offline()
 
-
 # Enabling Cache
 @st.cache(persist=True)
-
 
 # Title
 st.title("Accommodation in Accra: An Exploratory Data Analysis")
