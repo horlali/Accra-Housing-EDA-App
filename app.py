@@ -16,8 +16,6 @@ import cufflinks as cf
 from plotly.offline import download_plotlyjs,plot,iplot
 cf.go_offline()
 
-# Enabling Cache
-@st.cache(persist=True)
 
 # Title
 st.title("Accommodation in Accra: An Exploratory Data Analysis")
@@ -30,6 +28,9 @@ st.header("Explore the Dataset with the option below")
 # DataFrame
 dataset = 'accra_housing_dataset.xlsx'
 
+
+# Enabling Cache
+@st.cache(persist=True)
 
 # Function to Load Dataset
 def load_data(data):
