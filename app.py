@@ -145,3 +145,9 @@ st.header("Bubble Plot - [Price, Bedrooms, Area]")
 if st.checkbox("A bubble plot of price and the number of bedrooms, with respect to floor area."):
     fig = data.iplot(asFigure=True, kind='bubble',x='bedrooms',y='price',size='area')
     st.plotly_chart(fig)
+
+
+# Pairplot of the Distribution
+# Distribution of the Number of Bedrooms vs Price
+# Relationships between Price and other numerical variable.
+# Count of Categorical Variable
