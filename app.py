@@ -17,9 +17,13 @@ from plotly.offline import download_plotlyjs,plot,iplot
 cf.go_offline()
 
 
+# and Navigation bar
+st.sidebar.title("Accommodation in Accra: An Exploratory Data Analysis")
+st.sidebar.markdown("This application is an Accommodation Price in Accra Dashboard")
+
 # Title
 st.title("Accommodation in Accra: An Exploratory Data Analysis")
-st.header("Built with Streamlit")
+st.header("This application is an Accommodation Price in Accra Dashboard")
 
 st.title("Data Exploration")
 st.header("Explore the Dataset with the option below")
