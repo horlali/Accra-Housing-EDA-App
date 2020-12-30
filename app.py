@@ -19,12 +19,12 @@ cf.go_offline()
 def main():
     
     # and Navigation bar
-    st.sidebar.title("Accommodation in Accra: An Exploratory Data Analysis")
-    st.sidebar.markdown("This application is an Accommodation Price in Accra Dashboard")
+    #st.sidebar.title("Accommodation in Accra: An Exploratory Data Analysis")
+    #st.sidebar.markdown("This application is an Accommodation Price in Accra Dashboard")
 
     # Title
     st.title("Accommodation in Accra: An Exploratory Data Analysis")
-    st.header("This application is an Accommodation Price in Accra Dashboard")
+    st.header("This application is a Dashboard for Accommodation Prices in Accra")
 
     st.title("Data Exploration")
     st.header("Explore the Dataset with the option below")
@@ -131,6 +131,19 @@ def main():
         st.write(plt.axis('off'))
         st.pyplot(fig)
 
+    # Count of Categorical Variable
+    st.subheader("Count Plots of Categorical Variable.")
+    cat_vs = st.radio("Choose a categorical variable",["Furnishing Status","Amenities", "Location"])
+    if cat_vs == "Furnishing Status":
+        st.markdown("Number of Furnished Accommodation vs Not Furnished Accommodation")
+        st.plotly_chart(data.furnished.value_counts().iplot(asFigure=True, kind='bar',xTitle='Furnishing Status',yTitle='No. of Occurances'))
+    elif cat_vs == "Amenities":
+        st.markdown("Number of Accommodation with Listed Amenites vs Not Listed Amenities")
+        st.plotly_chart(data.amenities.value_counts().iplot(asFigure=True, kind='bar',xTitle='Furnishing Status',yTitle='No. of Occurances'))
+    else:
+        st.markdown("Location with the most Accomodation Listings")
+        st.plotly_chart(data.location.value_counts().iplot(asFigure=True, kind='bar',xTitle='Furnishing Status',yTitle='No. of Occurances'))
+
 
     # Distribution of Prices
     st.header("Distribution of Prices")
@@ -172,8 +185,10 @@ def main():
     st.markdown("Correlation Coefficient between Price, Floor Accra, Number of Bedrooms, etc.")
     st.write(data.corr())
     
-    st.header("Visualization of Insights")
+    
+
     # Visualization of Insights
+    st.header("Visualization of Insights")
     st.subheader("Relationship Between Price and Numerical Columns")
     insight_vs = st.selectbox("Select a feature to show relationship", ["Price vs Bedrooms", "Price vs Floor Area","Price vs Bathrooms","Price vs Garage"])
     if insight_vs == "Price vs Bedrooms":
@@ -190,7 +205,65 @@ def main():
         st.plotly_chart(figure)
     
 
-    # Count of Categorical Variable
+    # Locations with Affordable Accommodation
+    st.header("Locations with Affordable Accommodation")
+    st.markdown("This section explores the locations with affordable average price of accommodation in Accra")
+
+    aver_price_locations = data.groupby(['bedrooms','location'],sort=True).mean().reset_index()
+    
+    one_br = aver_price_locations[aver_price_locations.bedrooms==1].sort_values(by=['price'])
+    two_br = aver_price_locations[aver_price_locations.bedrooms==2].sort_values(by=['price'])
+    three_br = aver_price_locations[aver_price_locations.bedrooms==3].sort_values(by=['price'])
+    four_br = aver_price_locations[aver_price_locations.bedrooms==4].sort_values(by=['price'])
+    five_br = aver_price_locations[aver_price_locations.bedrooms==5].sort_values(by=['price'])
+
+    no_of_bedrooms = st.selectbox("Select number of Bedrooms", ["One Bedroom", "Two Bedrooms", "Three Bedrooms", "Four Bedrooms", "Five Bedrooms"])
+    if no_of_bedrooms == "One Bedroom":
+        st.plotly_chart(one_br.iplot(asFigure=True, kind='barh',x='location',y='price',title='One Bedroom Apartments',xTitle='price'))
+    elif no_of_bedrooms == "Two Bedrooms":
+        st.plotly_chart(two_br.iplot(asFigure=True, kind='barh',x='location',y='price',title='One Bedroom Apartments',xTitle='price'))
+    elif no_of_bedrooms == "Three Bedrooms":
+        st.plotly_chart(three_br.iplot(asFigure=True, kind='barh',x='location',y='price',title='One Bedroom Apartments',xTitle='price'))
+    elif no_of_bedrooms == "Four Bedrooms":
+        st.plotly_chart(four_br.iplot(asFigure=True, kind='barh',x='location',y='price',title='One Bedroom Apartments',xTitle='price'))
+    else:
+        st.plotly_chart(five_br.iplot(asFigure=True, kind='barh',x='location',y='price',title='One Bedroom Apartments',xTitle='price'))
+
+
+
+    # INSIGHT
+    st.title("Key Observation")
+    st.text("VARIABLE THAT INFLUENCE THE PRICES OF ACCOMMODATION IN ACCRA")
+    st.text("Some of the variable that influence the prices of accommodation in Accra includes")
+    st.text("1. Location of the accommodation")
+    st.text("2. The availability of the amenities")
+
+    st.text("Other factors includes the following")
+
+    st.text("The number of Bedrooms")
+    st.text("The floor area measured in meter squared")
+    st.text("The Number of garages")
+
+    st.title("CONCLUSION")
+    st.markdown("From the analysis and insight generated, we have learnt that there are various options for you if you need to rent accommodation in Accra.")
+    st.markdown("Some of the main factors that influence the price of accommodation in Accra is the location, the availability of amenities.")
+    st.markdown("The number of bedrooms and the size floor area only has a mid positive effect the price of accommodation.")
+    st.markdown("It also goes without saying that at every price within the range of the dataset there is an available option except that you may have to sacrifice on some amenities and cater for furnishing the apartment.")
+    st.markdown("The location of the accommodation will also determine how much your pay per month.")
+
+    # About
+
+    if st.button("About App"):
+        st.subheader("Accommodation Prices in Accra")
+        st.text("Built with Streamlit")
+
+    if st.button("About Author"):
+        st.text("Twitter: @_horlali")
+        st.text("Github: wwww.github.com/horlali")
+        
+
+
+
 
 if __name__ == "__main__":
     main()
