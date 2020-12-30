@@ -177,18 +177,18 @@ def main():
     st.subheader("Relationship Between Price and Numerical Columns")
     insight_vs = st.selectbox("Select a feature to show relationship", ["Price vs Bedrooms", "Price vs Floor Area","Price vs Bathrooms","Price vs Garage"])
     if insight_vs == "Price vs Bedrooms":
-        figure = data.iplot(kind='scatter',x='price',y='bedrooms',mode='markers',xTitle='Price per month',yTitle='No. of Bedrooms')
+        figure = data.iplot(asFigure=True, kind='scatter',x='price',y='bedrooms',mode='markers',xTitle='Price per month',yTitle='No. of Bedrooms')
         st.plotly_chart(figure)
-    ''' elif insight_vs == "Price vs Floor Area":
-        figure = df.iplot(kind='scatter',x='price',y='area',mode='markers',xTitle='Price per month',yTitle='Floor Area')
+    elif insight_vs == "Price vs Floor Area":
+        figure = data.iplot(asFigure=True, kind='scatter',x='price',y='area',mode='markers',xTitle='Price per month',yTitle='Floor Area')
         st.plotly_chart(figure)
     elif insight_vs == "Price vs Bathrooms":
-        figure = df.iplot(kind='scatter',x='price',y='bathrooms',mode='markers',xTitle='Price per month',yTitle='No. of Bathrooms')
+        figure = data.iplot(asFigure=True, kind='scatter',x='price',y='bathrooms',mode='markers',xTitle='Price per month',yTitle='No. of Bathrooms')
         st.plotly_chart(figure)
     else:
-        figure = df.iplot(kind='scatter',x='price',y='garage',mode='markers',xTitle='Price per month',yTitle='No. of Garage')
+        figure = data.iplot(asFigure=True, kind='scatter',x='price',y='garage',mode='markers',xTitle='Price per month',yTitle='No. of Garage')
         st.plotly_chart(figure)
-    '''
+    
 
     # Count of Categorical Variable
 
