@@ -67,16 +67,16 @@ def main():
 
 
     # Show Dimensions
-    data_dim = st.radio("What Dimension do you want to see?", ("Rows","Columns","All"))
-    if data_dim == "Rows":
-        st.text("Showing Rows")
-        st.write(data.shape[0])
-    elif data_dim == "Columns":
-        st.text("Showing Colums")
-        st.write(data.shape[1]) 
-    else:
+    data_dim = st.radio("What Dimension do you want to see?", ("All", "Rows","Columns"))
+    if data_dim == "All":
         st.text("Showing shape of Dataset")
         st.write(data.shape)
+    elif data_dim == "Rows":
+        st.text("Showing rows")
+        st.write(data.shape[0]) 
+    else:
+        st.text("Showing columns")
+        st.write(data.shape[1])
 
 
     # Show Summary
