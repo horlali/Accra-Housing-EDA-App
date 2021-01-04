@@ -23,11 +23,11 @@ def main():
     activities = ["Project Description","Exploration","Visualization","Insights",
     "Observation and Conclusion","About"]
     choices = st.sidebar.selectbox("Select Activities",activities)
-    background = open("background.txt","r")
-    description = open("description.txt","r")
-    goal = open("goal.txt","r")
-    conclusion = open("conclusion.txt","r")
-    observation = open("observation.txt","r")
+    background = open("files/background.txt","r")
+    description = open("files/description.txt","r")
+    goal = open("files/goal.txt","r")
+    conclusion = open("files/conclusion.txt","r")
+    observation = open("files/observation.txt","r")
 
 
     
@@ -36,7 +36,7 @@ def main():
 
     # Function to Load Dataset into a DataFrame    
     def load_data():
-        df = pd.read_csv('dataset.csv')
+        df = pd.read_csv("data/dataset.csv")
         return df
     data = load_data()
 
@@ -52,8 +52,6 @@ def main():
         st.write(description.read())
         st.header("Project Goal")
         st.write(goal.read())
-        #st.header("Deliverables")
-        #st.text("Insert Deliverables here")
 
 
 
