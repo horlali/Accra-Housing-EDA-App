@@ -132,18 +132,6 @@ def main():
         st.title("Data Visualization")
         st.header("Explore this easy to use interactive charts to understand accommodation pricing in Accra")
 
-        # World Cloud of Location
-        st.header("WordCloud of Location of Apartment Listing")
-        from wordcloud import WordCloud
-        texts = " ".join(location for location in data.location)
-        wordcloud = WordCloud(width=3000,height=1800,margin=1,max_font_size=150).generate(texts)
-
-        if st.checkbox("Word Cloud of Locations"):
-            fig, ax = plt.subplots()
-            st.write(plt.imshow(wordcloud))
-            st.write(plt.axis('off'))
-            st.pyplot(fig)
-
         # Count of Categorical Variable
         st.subheader("Count Plots of Categorical Variable.")
         cat_vs = st.radio("Choose a categorical variable",["Furnishing Status","Amenities", "Location"])
@@ -185,6 +173,19 @@ def main():
         if st.checkbox("A bubble plot of price and the number of bedrooms, with respect to floor area."):
             fig = data.iplot(asFigure=True, kind='bubble',x='bedrooms',y='price',size='area')
             st.plotly_chart(fig)
+        
+        # World Cloud of Location
+        st.header("WordCloud of Location of Apartment Listing")
+        from wordcloud import WordCloud
+        texts = " ".join(location for location in data.location)
+        wordcloud = WordCloud(width=3000,height=1800,margin=1,max_font_size=150).generate(texts)
+
+        if st.checkbox("Word Cloud of Locations"):
+            fig, ax = plt.subplots()
+            st.write(plt.imshow(wordcloud))
+            st.write(plt.axis('off'))
+            st.pyplot(fig)
+
 
 
 
