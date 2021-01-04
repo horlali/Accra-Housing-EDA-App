@@ -39,10 +39,10 @@ def main():
     if choices == "Project Description":
         st.title("Buget Accommodation in Accra")
         st.markdown("A Dashboard by Gideon Ahiadzi")
-        st.info("https://www.github.com/horlali")
+        st.info("https://github.com/horlali/accra-housing-eda-app")
         st.header("Background")
         st.text("Insert background of the project here")
-        st.header("Project Description")
+        st.header("Project Description")    
         st.text("Insert Project Description Here")
         st.header("Project Goal")
         st.text("Insert Project Description Here")
@@ -126,7 +126,7 @@ def main():
     # Data Visualization
     elif choices == "Visualization":
         st.title("Data Visualization")
-        st.header("Explore this easy to understand interactive chart to understand accommodation pricing in Accra")
+        st.header("Explore this easy to use interactive charts to understand accommodation pricing in Accra")
 
         # World Cloud of Location
         st.header("WordCloud of Location of Apartment Listing")
