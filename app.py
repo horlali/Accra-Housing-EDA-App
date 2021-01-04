@@ -260,7 +260,7 @@ def main():
         
         #About Author
         st.title("About Author")
-        st.info("Github: https://wwww.github.com/horlali")
+        st.info("Github: https://www.github.com/horlali")
         st.info("Twitter: https://www.twitter.com/_horlali")
             
 
