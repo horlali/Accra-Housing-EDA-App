@@ -1,1 +1,0 @@
-The main goal of the project is to find the areas in the Greater Accra region with the most affordable accommodation.
