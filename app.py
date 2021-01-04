@@ -43,7 +43,7 @@ def main():
 
     # Working from Sidebar
     if choices == "Project Description":
-        st.title("Buget Accommodation in Accra")
+        st.title("Budget Accommodation in Accra")
         st.markdown("A Dashboard by Gideon Ahiadzi")
         st.info("https://github.com/horlali/accra-housing-eda-app")
         st.header("Background")
@@ -253,12 +253,12 @@ def main():
     # About
     elif choices == "About":
         #About App
-        st.header("About App")
-        st.markdown("Accommodation Prices in Accra")
-        st.markdown("Built with Streamlit")
+        st.title("About App")
+        st.markdown("Exploring Accommodation Prices in Accra")
+        st.text("[Insert App Description Here]")
         
         #About Author
-        st.header("About Author")
+        st.title("About Author")
         st.info("Github: https://wwww.github.com/horlali")
         st.info("Twitter: https://www.twitter.com/_horlali")
             
