@@ -23,6 +23,12 @@ def main():
     activities = ["Project Description","Exploration","Visualization","Insights",
     "Observation and Conclusion","About"]
     choices = st.sidebar.selectbox("Select Activities",activities)
+    background = open("background.txt","r")
+    description = open("description.txt","r")
+    goal = open("goal.txt","r")
+    conclusion = open("conclusion.txt","r")
+    observation = open("observation.txt","r")
+
 
     
     # Enabling Cache
@@ -41,13 +47,13 @@ def main():
         st.markdown("A Dashboard by Gideon Ahiadzi")
         st.info("https://github.com/horlali/accra-housing-eda-app")
         st.header("Background")
-        st.text("Insert background of the project here")
+        st.write(background.read())
         st.header("Project Description")    
-        st.text("Insert Project Description Here")
+        st.write(description.read())
         st.header("Project Goal")
-        st.text("Insert Project Description Here")
-        st.header("Deliverables")
-        st.text("Insert Deliverables here")
+        st.write(goal.read())
+        #st.header("Deliverables")
+        #st.text("Insert Deliverables here")
 
 
 
@@ -242,29 +248,16 @@ def main():
         # Observation
         st.title("Key Observation")
         st.subheader("VARIABLE THAT INFLUENCE THE PRICES OF ACCOMMODATION IN ACCRA")
-        st.markdown("**Some of the variable that influence the prices of accommodation in Accra includes**")
-        st.text("1. Location of the accommodation")
-        st.text("2. The availability of the amenities")
-        st.markdown("**Other factors includes the following**")
-        st.text("The number of Bedrooms")
-        st.text("The floor area measured in meter squared")
-        st.text("The Number of garages")
-        # Conclusion
+        st.write(observation.read())
         st.title("Conclusion")
-        st.markdown("From the analysis and insight generated, we have learnt that there are various options for you if you need to rent accommodation in Accra.")
-        st.markdown("Some of the main factors that influence the price of accommodation in Accra is the location, the availability of amenities.")
-        st.markdown("The number of bedrooms and the size floor area only has a mid positive effect the price of accommodation.")
-        st.markdown("It also goes without saying that at every price within the range of the dataset there is an available option except that you may have to sacrifice on some amenities and cater for furnishing the apartment.")
-        st.markdown("The location of the accommodation will also determine how much your pay per month.")
-
-
+        st.write(conclusion.read())
 
     # About
     elif choices == "About":
         #About App
         st.header("About App")
         st.markdown("Accommodation Prices in Accra")
-        st.text("Built with Streamlit")
+        st.markdown("Built with Streamlit")
         
         #About Author
         st.header("About Author")
